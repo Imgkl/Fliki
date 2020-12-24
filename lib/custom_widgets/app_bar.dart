@@ -6,9 +6,10 @@ class Appbar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 58.0, right: 10),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset("assets/fg.png", scale: 9),
+          Image.asset("assets/fg.png", scale: 8),
           Align(
             alignment: Alignment.centerRight,
             child: Text("wikipedia",
