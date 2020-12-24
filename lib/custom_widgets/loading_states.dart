@@ -2,6 +2,7 @@ import 'package:flikipedia/enums/loading_states_enum.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingStates extends StatelessWidget {
   final SearchProvider searchProvider;
@@ -13,11 +14,11 @@ class LoadingStates extends StatelessWidget {
         ? Padding(
             padding: const EdgeInsets.only(top: 118.0),
             child: Align(
-              alignment: Alignment.center,
-              child: CupertinoActivityIndicator(
-                radius: 20.0,
-              ),
-            ),
+                alignment: Alignment.center,
+                child: SpinKitDoubleBounce(
+                  color: Colors.grey,
+                  size: 60,
+                )),
           )
         : searchProvider.loadingStates == LOADING_STATES.EMPTY
             ? Padding(
@@ -30,12 +31,14 @@ class LoadingStates extends StatelessWidget {
             : Padding(
                 padding: const EdgeInsets.only(top: 118.0, left: 50),
                 child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Type what you are looking for...",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6
-                            .copyWith(color: Colors.black.withOpacity(0.3)))),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Type what you are looking for...",
+                    style: Theme.of(context).textTheme.headline6.copyWith(
+                          color: Colors.black.withOpacity(0.3),
+                        ),
+                  ),
+                ),
               );
   }
 }

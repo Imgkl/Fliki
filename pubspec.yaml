@@ -13,9 +13,13 @@ dependencies:
     sdk: flutter
   cached_network_image: ^2.5.0
   cupertino_icons: ^1.0.0
+  dough: ^0.3.6
+  flutter_neumorphic: ^3.0.3
+  flutter_spinkit: ^4.1.2+1
   fluttertoast: ^7.1.6
   google_fonts: ^1.1.1
   http: ^0.12.2
+  neumorphic: ^0.4.0
   path_provider: ^1.6.24
   provider: ^4.3.2+3
   share: ^0.6.5+4
