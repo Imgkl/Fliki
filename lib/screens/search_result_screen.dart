@@ -22,13 +22,6 @@ class SearchResultScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text("Results for '$resultQuery'"),
-            actions: [
-              if (searchProvider.isCache)
-                IconButton(
-                    icon: Icon(Icons.cached),
-                    onPressed: () =>
-                        searchProvider.deleteCache(resultQuery, context))
-            ],
           ),
           body: ListView.builder(
               itemCount: searchResult.query.pages.length,

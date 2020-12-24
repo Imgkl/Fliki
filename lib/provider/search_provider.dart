@@ -23,24 +23,6 @@ class SearchProvider extends ChangeNotifier {
     Directory(cacheDir).delete(recursive: true);
   }
 
-  deleteCache(String string, BuildContext ctx) async {
-    var cacheDir = (await getTemporaryDirectory()).path;
-    String fileName = "$string.json";
-    if (await File(cacheDir + "/" + fileName).exists()) {
-      File(cacheDir + "/" + fileName)
-          .delete()
-          .then((value) => searchApi(string, ctx));
-      Fluttertoast.showToast(
-          msg: "Fetched from Api",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.black,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
-
   searchApi(String substring, BuildContext ctx) async {
     isLoading = true;
     notifyListeners();
@@ -64,8 +46,6 @@ class SearchProvider extends ChangeNotifier {
             ),
           ),
         );
-        screen = 1;
-        notifyListeners();
         Fluttertoast.showToast(
             msg: "This is a cached response.",
             toastLength: Toast.LENGTH_SHORT,
@@ -95,9 +75,6 @@ class SearchProvider extends ChangeNotifier {
         File file = new File(tempDir.path + "/" + fileName);
         file.writeAsString(jsonResponse, flush: true, mode: FileMode.write);
         if (searchResult.query != null) {
-          if (screen == 1) {
-            Navigator.pop(ctx);
-          }
           Navigator.push(
             ctx,
             MaterialPageRoute(
@@ -107,8 +84,6 @@ class SearchProvider extends ChangeNotifier {
               ),
             ),
           );
-          screen = 1;
-          notifyListeners();
         } else {
           this.loadingStates = LOADING_STATES.EMPTY;
           notifyListeners();
