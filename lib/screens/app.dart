@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flikipedia/custom_widgets/app_bar.dart';
 import 'package:flikipedia/custom_widgets/gradient_circle.dart';
 import 'package:flikipedia/custom_widgets/input_feild.dart';
 import 'package:flikipedia/custom_widgets/loading_states.dart';
@@ -77,25 +78,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
               ),
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 58.0, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Image.asset("assets/fg.png", scale: 9),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Text("wikipedia",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline4
-                                  .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black)),
-                        ),
-                      ],
-                    ),
-                  ),
+                  Appbar(),
                   Expanded(
                     child: Center(
                       child: Padding(
