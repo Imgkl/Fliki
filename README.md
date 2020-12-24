@@ -1,16 +1,14 @@
-# flikipedia
+# Flikipedia
 
-A Flutter application to get posts from wikipedia api
+A Minimalistic flutter application which uses Wiki Search API.
 
-## Getting Started
+## Mockup and Implementation
+<img src = "ui.png" height="300">
+<img src = "preview.jpg" height="300">
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
+ - Caching API responses
+ - Adaptive icons on Android
+ - Long press to share a result to other apps.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
