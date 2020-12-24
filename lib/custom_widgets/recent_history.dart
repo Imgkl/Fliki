@@ -124,8 +124,9 @@ class _RecentHistoryState extends State<RecentHistory> {
                               widget.searchProvider.searchApi(
                                   widget.recentList[index].title, context);
                             },
-                            child: Text(widget.recentList[index].title,
-                                style: TextStyle(fontSize: 17)),
+                            child: Text(
+                              widget.recentList[index].title,
+                            ),
                           ),
                         ),
                       );
