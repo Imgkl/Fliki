@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flikipedia/enums/loading_states_enum.dart';
 import 'package:flikipedia/model/search_result.dart';
 import 'package:flikipedia/screens/search_result_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -39,14 +40,13 @@ class SearchProvider extends ChangeNotifier {
         isCache = true;
         notifyListeners();
         Navigator.push(
-          ctx,
-          MaterialPageRoute(
-            builder: (context) => SearchResultScreen(
-              searchResult: searchResult,
-              resultQuery: substring,
-            ),
-          ),
-        );
+            ctx,
+            CupertinoPageRoute(
+              builder: (context) => SearchResultScreen(
+                searchResult: searchResult,
+                resultQuery: substring,
+              ),
+            ));
         Fluttertoast.showToast(
             msg: "This is a cached response.",
             toastLength: Toast.LENGTH_SHORT,
@@ -77,14 +77,13 @@ class SearchProvider extends ChangeNotifier {
         file.writeAsString(jsonResponse, flush: true, mode: FileMode.write);
         if (searchResult.query != null) {
           Navigator.push(
-            ctx,
-            MaterialPageRoute(
-              builder: (context) => SearchResultScreen(
-                searchResult: searchResult,
-                resultQuery: substring,
-              ),
-            ),
-          );
+              ctx,
+              CupertinoPageRoute(
+                builder: (context) => SearchResultScreen(
+                  searchResult: searchResult,
+                  resultQuery: substring,
+                ),
+              ));
         } else {
           this.loadingStates = LOADING_STATES.EMPTY;
           notifyListeners();
