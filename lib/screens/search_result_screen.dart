@@ -4,8 +4,6 @@ import 'package:flikipedia/model/search_result.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SearchResultScreen extends StatelessWidget {
   final SearchResult searchResult;

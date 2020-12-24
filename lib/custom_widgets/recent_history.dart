@@ -2,7 +2,6 @@ import 'package:flikipedia/model/recents.model.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:neumorphic/neumorphic.dart';
 
 class RecentHistory extends StatefulWidget {
   final SearchProvider searchProvider;
