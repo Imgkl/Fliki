@@ -24,6 +24,7 @@ class SearchProvider extends ChangeNotifier {
   }
 
   searchApi(String substring, BuildContext ctx) async {
+    this.loadingStates = LOADING_STATES.IDLE;
     isLoading = true;
     notifyListeners();
     String fileName = "$substring.json";
