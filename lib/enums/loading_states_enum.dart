@@ -1,0 +1,4 @@
+enum LOADING_STATES {
+  IDLE,
+  EMPTY,
+}

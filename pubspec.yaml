@@ -1,0 +1,32 @@
+name: flikipedia
+description: A Flutter application to get posts from wikipedia api
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cached_network_image: ^2.5.0
+  cupertino_icons: ^1.0.0
+  google_fonts: ^1.1.1
+  http: ^0.12.2
+  path_provider: ^1.6.24
+  provider: ^4.3.2+3
+  shared_preferences: ^0.5.12+4
+  shimmer: ^1.1.2
+  url_launcher: ^5.7.10
+  fluttertoast: ^7.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/

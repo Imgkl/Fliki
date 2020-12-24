@@ -1,0 +1,119 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:flikipedia/enums/loading_states_enum.dart';
+import 'package:flikipedia/model/search_result.dart';
+import 'package:flikipedia/screens/search_result_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+
+class SearchProvider extends ChangeNotifier {
+  SearchResult searchResult;
+  bool emptyResult = false;
+  bool isLoading = false;
+  bool isCache = false;
+  int screen = 0;
+  LOADING_STATES loadingStates = LOADING_STATES.IDLE;
+
+  SearchProvider get searchProvider => SearchProvider();
+
+  deleteAllCache() async {
+    var cacheDir = (await getTemporaryDirectory()).path;
+    Directory(cacheDir).delete(recursive: true);
+  }
+
+  deleteCache(String string, BuildContext ctx) async {
+    var cacheDir = (await getTemporaryDirectory()).path;
+    String fileName = "$string.json";
+    if (await File(cacheDir + "/" + fileName).exists()) {
+      File(cacheDir + "/" + fileName)
+          .delete()
+          .then((value) => searchApi(string, ctx));
+      Fluttertoast.showToast(
+          msg: "Fetched from Api",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.black,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
+
+  searchApi(String substring, BuildContext ctx) async {
+    isLoading = true;
+    notifyListeners();
+    String fileName = "$substring.json";
+    var cacheDir = await getTemporaryDirectory();
+    if (await File(cacheDir.path + "/" + fileName).exists()) {
+      print("Loading from cache");
+      var jsonData = File(cacheDir.path + "/" + fileName).readAsStringSync();
+      searchResult = SearchResult.fromJson(json.decode(jsonData));
+      isLoading = false;
+      notifyListeners();
+      if (searchResult.query != null) {
+        isCache = true;
+        notifyListeners();
+        Navigator.push(
+          ctx,
+          MaterialPageRoute(
+            builder: (context) => SearchResultScreen(
+              searchResult: searchResult,
+              resultQuery: substring,
+            ),
+          ),
+        );
+        screen = 1;
+        notifyListeners();
+        Fluttertoast.showToast(
+            msg: "This is a cached response.",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.black,
+            textColor: Colors.white,
+            fontSize: 16.0);
+        notifyListeners();
+      } else {
+        this.loadingStates = LOADING_STATES.EMPTY;
+        notifyListeners();
+      }
+    } else {
+      print("fetching from API");
+      var sepString = substring.trim().split(' ');
+      var searchString = sepString.join('_');
+      await http
+          .get(
+              "https://en.wikipedia.org//w/api.php?action=query&format=json&prop=extracts%7Cpageimages%7Cpageterms%7Cinfo&inprop=url&generator=prefixsearch&formatversion=2&piprop=thumbnail&pithumbsize=600&wbptterms=description&gpssearch=$searchString&exsentences=5&exintro=1&explaintext=1&gpslimit=50")
+          .then((value) async {
+        this.isLoading = false;
+        notifyListeners();
+        searchResult = SearchResult.fromJson(json.decode(value.body));
+        var jsonResponse = value.body;
+        var tempDir = await getTemporaryDirectory();
+        File file = new File(tempDir.path + "/" + fileName);
+        file.writeAsString(jsonResponse, flush: true, mode: FileMode.write);
+        if (searchResult.query != null) {
+          if (screen == 1) {
+            Navigator.pop(ctx);
+          }
+          Navigator.push(
+            ctx,
+            MaterialPageRoute(
+              builder: (context) => SearchResultScreen(
+                searchResult: searchResult,
+                resultQuery: substring,
+              ),
+            ),
+          );
+          screen = 1;
+          notifyListeners();
+        } else {
+          this.loadingStates = LOADING_STATES.EMPTY;
+          notifyListeners();
+        }
+      });
+    }
+  }
+}
