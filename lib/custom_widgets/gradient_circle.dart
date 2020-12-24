@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
-var whiteBlackGradient = new LinearGradient(
+var smallGradient = new LinearGradient(
     colors: [const Color(0xFFFFFFFF), const Color(0xFF000000)],
     tileMode: TileMode.clamp,
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
+    stops: [0.0, 1.0]);
+
+var biggerGradinet = new LinearGradient(
+    colors: [const Color(0xFFFFFFFF), const Color(0xFF000000)],
+    tileMode: TileMode.clamp,
+    begin: Alignment.bottomLeft,
+    end: Alignment.topRight,
     stops: [0.0, 1.0]);
 
 class GradientCircles extends StatelessWidget {
@@ -21,7 +28,7 @@ class GradientCircles extends StatelessWidget {
             child: new Container(
               height: 900.0,
               decoration: BoxDecoration(
-                  gradient: whiteBlackGradient, shape: BoxShape.circle),
+                  gradient: smallGradient, shape: BoxShape.circle),
             ),
           ),
         ),
@@ -34,7 +41,7 @@ class GradientCircles extends StatelessWidget {
               height: 120.0,
               width: 140.0,
               decoration: BoxDecoration(
-                  gradient: whiteBlackGradient, shape: BoxShape.circle),
+                  gradient: biggerGradinet, shape: BoxShape.circle),
             ),
           ),
         ),
