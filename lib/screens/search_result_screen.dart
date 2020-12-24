@@ -1,3 +1,4 @@
+import 'package:flikipedia/custom_widgets/share.dart';
 import 'package:flikipedia/custom_widgets/shimmer_image.dart';
 import 'package:flikipedia/model/search_result.dart';
 import 'package:flikipedia/provider/search_provider.dart';
@@ -37,11 +38,11 @@ class SearchResultScreen extends StatelessWidget {
                   child: Card(
                     child: ListTile(
                       onLongPress: () {
-                        _share(context, searchResultData.pages[index].extract,
+                        share(context, searchResultData.pages[index].extract,
                             searchResultData.pages[index].url);
                       },
                       onTap: () {
-                        _launchURL(searchResultData.pages[index].url);
+                        launchURL(searchResultData.pages[index].url);
                       },
                       contentPadding: EdgeInsets.all(8.0),
                       leading: searchResultData.pages[index].thumbnail != null
@@ -75,19 +76,4 @@ class SearchResultScreen extends StatelessWidget {
       },
     );
   }
-}
-
-_launchURL(url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
-_share(BuildContext ctx, String extract, String url) {
-  Share.share(
-    "Found this Interesting article on Wikipedia\n\n${extract != null ? extract : ""}\n\n$url",
-    subject: "Found this Interesting article on Wikipedia",
-  );
 }
