@@ -1,6 +1,8 @@
 import 'package:flikipedia/model/recents.model.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:neumorphic/neumorphic.dart';
 
 class RecentHistory extends StatefulWidget {
   final SearchProvider searchProvider;
@@ -52,7 +54,6 @@ class _RecentHistoryState extends State<RecentHistory> {
         child: Padding(
           padding: const EdgeInsets.only(top: 18.0, left: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -94,10 +95,10 @@ class _RecentHistoryState extends State<RecentHistory> {
                 Padding(
                   padding: const EdgeInsets.only(top: 18.0),
                   child: Text("Search something...",
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(1), fontSize: 17)),
+                      style: TextStyle(color: Colors.white, fontSize: 17)),
                 ),
-              Expanded(
+              Container(
+                height: 50,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -111,15 +112,23 @@ class _RecentHistoryState extends State<RecentHistory> {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                            onTap: () {
+                          onTap: () {
+                            widget.searchProvider.searchApi(
+                                widget.recentList[index].title, context);
+                          },
+                          child: NeumorphicButton(
+                            style: NeumorphicStyle(
+                                color: Colors.white,
+                                shape: NeumorphicShape.convex,
+                                border: NeumorphicBorder()),
+                            onPressed: () {
                               widget.searchProvider.searchApi(
                                   widget.recentList[index].title, context);
                             },
-                            child: Chip(
-                                elevation: 3,
-                                shadowColor: Colors.white,
-                                backgroundColor: Colors.white,
-                                label: Text(widget.recentList[index].title))),
+                            child: Text(widget.recentList[index].title,
+                                style: TextStyle(fontSize: 17)),
+                          ),
+                        ),
                       );
                     }),
               )
