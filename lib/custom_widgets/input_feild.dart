@@ -18,6 +18,11 @@ class _InputFeildState extends State<InputFeild> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: Theme.of(context).textTheme.headline2.copyWith(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+      textCapitalization: TextCapitalization.words,
       controller: widget.textController,
       textInputAction: TextInputAction.search,
       onSubmitted: (text) {
@@ -32,30 +37,33 @@ class _InputFeildState extends State<InputFeild> {
       },
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        suffixIcon: IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              if (widget.textController.text != null &&
-                  widget.textController.text.length > 0) {
-                widget.searchProvider
-                    .searchApi(widget.textController.text, context);
-                widget.addItem();
-              }
-
-              FocusScope.of(context).unfocus();
-            }),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(0),
-            borderSide: BorderSide(color: Colors.black)),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(0),
-            borderSide: BorderSide(color: Colors.black.withOpacity(0.1))),
-        contentPadding: EdgeInsets.fromLTRB(10, 10.0, 0.0, 10.0),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(0),
-            borderSide: BorderSide(color: Colors.black)),
-        hintText: "Wiki search...",
-      ),
+          suffixIcon: (widget.textController.text.length > 0)
+              ? IconButton(
+                  icon: Icon(Icons.clear),
+                  onPressed: () {
+                    setState(() {
+                      widget.textController.clear();
+                    });
+                  })
+              : Container(
+                  height: 0,
+                  width: 0,
+                ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(0),
+              borderSide: BorderSide(color: Colors.black)),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(0),
+              borderSide: BorderSide(color: Colors.black.withOpacity(0.1))),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 40.0, horizontal: 10),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(0),
+              borderSide: BorderSide(color: Colors.black)),
+          hintText: " Search",
+          hintStyle: TextStyle(
+            color: Colors.black.withOpacity(0.3),
+          )),
     );
   }
 }
