@@ -29,6 +29,7 @@ class SearchResultScreen extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
+                    elevation: 5,
                     child: ListTile(
                       onLongPress: () {
                         share(context, searchResultData.pages[index].extract,
