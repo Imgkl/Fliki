@@ -35,9 +35,20 @@ class _RecentHistoryState extends State<RecentHistory> {
     return Align(
       alignment: Alignment.bottomRight,
       child: Container(
-        color: Colors.black,
+        decoration: BoxDecoration(
+          color: Colors.black,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              blurRadius: 25.0,
+            ),
+          ],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(40.0),
+          ),
+        ),
         height: screenHeight * 0.22,
-        width: screenWidth * 0.85,
+        width: screenWidth * 0.9,
         child: Padding(
           padding: const EdgeInsets.only(top: 18.0, left: 20),
           child: Column(
@@ -48,10 +59,13 @@ class _RecentHistoryState extends State<RecentHistory> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Your recent history...",
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.5), fontSize: 17),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(
+                      "Your recent history...",
+                      style: TextStyle(
+                          color: Colors.white.withOpacity(0.5), fontSize: 17),
+                    ),
                   ),
                   if (widget.recentList.isNotEmpty)
                     Padding(
@@ -79,7 +93,7 @@ class _RecentHistoryState extends State<RecentHistory> {
               if (widget.recentList.isEmpty)
                 Padding(
                   padding: const EdgeInsets.only(top: 18.0),
-                  child: Text("Search something 😀",
+                  child: Text("Search something...",
                       style: TextStyle(
                           color: Colors.white.withOpacity(1), fontSize: 17)),
                 ),
