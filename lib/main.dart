@@ -14,15 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      // providers: [
-      //   ChangeNotifierProvider(create: (_) => SearchProvider()),
-      // ],
       create: (_) => SearchProvider(),
       child: MaterialApp(
         initialRoute: '/',
         debugShowCheckedModeBanner: false,
         title: 'Flikipedia',
         theme: ThemeData(
+          canvasColor: Colors.white,
           primaryColor: Colors.black,
           textTheme: GoogleFonts.ubuntuTextTheme(
             Theme.of(context).textTheme,
