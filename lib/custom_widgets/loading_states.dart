@@ -27,6 +27,15 @@ class LoadingStates extends StatelessWidget {
                     child: Text("No results found.",
                         style: Theme.of(context).textTheme.headline6)),
               )
-            : Container();
+            : Padding(
+                padding: const EdgeInsets.only(top: 118.0, left: 50),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Type what you are looking for...",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            .copyWith(color: Colors.black.withOpacity(0.3)))),
+              );
   }
 }
