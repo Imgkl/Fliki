@@ -69,7 +69,6 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
       builder: (context, searchProvider, _) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.white,
           body: Stack(
             children: [
               GradientCircles(),
