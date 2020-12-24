@@ -3,6 +3,7 @@ import 'package:flikipedia/model/search_result.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SearchResultScreen extends StatelessWidget {
@@ -35,6 +36,10 @@ class SearchResultScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
                     child: ListTile(
+                      onLongPress: () {
+                        _share(context, searchResultData.pages[index].extract,
+                            searchResultData.pages[index].url);
+                      },
                       onTap: () {
                         _launchURL(searchResultData.pages[index].url);
                       },
@@ -78,4 +83,11 @@ _launchURL(url) async {
   } else {
     throw 'Could not launch $url';
   }
+}
+
+_share(BuildContext ctx, String extract, String url) {
+  Share.share(
+    "Found this Interesting article on Wikipedia\n\n${extract != null ? extract : ""}\n\n$url",
+    subject: "Found this Interesting article on Wikipedia",
+  );
 }
