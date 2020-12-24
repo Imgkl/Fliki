@@ -11,21 +11,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cached_network_image: ^2.5.0
+
+  #Essentials
+  path_provider: ^1.6.24
+  provider: ^4.3.2+3
+  google_fonts: ^1.1.1
+  http: ^0.12.2
   cupertino_icons: ^1.0.0
-  dough: ^0.3.6
+  url_launcher: ^5.7.10
+  shared_preferences: ^0.5.12+4
+  cached_network_image: ^2.5.0
+
+  #Misc
   flutter_neumorphic: ^3.0.3
   flutter_spinkit: ^4.1.2+1
   fluttertoast: ^7.1.6
-  google_fonts: ^1.1.1
-  http: ^0.12.2
-  neumorphic: ^0.4.0
-  path_provider: ^1.6.24
-  provider: ^4.3.2+3
-  share: ^0.6.5+4
-  shared_preferences: ^0.5.12+4
   shimmer: ^1.1.2
-  url_launcher: ^5.7.10
+  share: ^0.6.5+4
+
 
 dev_dependencies:
   flutter_test:
