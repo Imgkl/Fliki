@@ -31,8 +31,6 @@ dependencies:
   fluttertoast: ^7.1.6
   shimmer: ^1.1.2
   share: ^0.6.5+4
-  lite_rolling_switch: ^0.1.1
-  line_icons: ^0.2.0
   font_awesome_flutter: ^8.11.0
 
 
