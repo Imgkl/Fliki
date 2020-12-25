@@ -7,6 +7,7 @@ A Minimalistic flutter application which uses Wiki Search API.
 
 
 ## Features
+ - State management (Provider)
  - Caching API responses
  - Adaptive icons on Android
  - Long press to share a result to other apps.
