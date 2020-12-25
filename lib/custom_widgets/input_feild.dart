@@ -1,6 +1,7 @@
 import 'package:flikipedia/custom_widgets/dynamic_text.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class InputFeild extends StatefulWidget {
@@ -35,6 +36,7 @@ class _InputFeildState extends State<InputFeild> {
       controller: widget.textController,
       textInputAction: TextInputAction.search,
       onSubmitted: (text) {
+        HapticFeedback.lightImpact();
         setState(() async {
           if (text != null && text.length > 0) {
             widget.textController.text = text;
