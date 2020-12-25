@@ -3,7 +3,7 @@
 A Minimalistic flutter application which uses Wiki Search API.
 
 ## Mockup and Implementation
-<img src = "ui.png" height="500">&nbsp;&nbsp;&nbsp;&nbsp;<img src = "preview.png" height="500">
+<img src = "ui.png" height="500">&nbsp;&nbsp;&nbsp;&nbsp;<img src = "implementation.png" height="500">
 
 
 ## Features
