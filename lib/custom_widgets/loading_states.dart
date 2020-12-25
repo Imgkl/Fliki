@@ -1,3 +1,4 @@
+import 'package:flikipedia/custom_widgets/dynamic_text.dart';
 import 'package:flikipedia/enums/loading_states_enum.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,7 +27,9 @@ class LoadingStates extends StatelessWidget {
                 child: Align(
                     alignment: Alignment.center,
                     child: Text("No results found.",
-                        style: Theme.of(context).textTheme.headline6)),
+                        style: Theme.of(context).textTheme.headline6.copyWith(
+                              color: DynamicColor().getColor(0.3),
+                            ))),
               )
             : Padding(
                 padding: const EdgeInsets.only(top: 118.0, left: 50),
@@ -35,7 +38,7 @@ class LoadingStates extends StatelessWidget {
                   child: Text(
                     "Type what you are looking for...",
                     style: Theme.of(context).textTheme.headline6.copyWith(
-                          color: Colors.black.withOpacity(0.3),
+                          color: DynamicColor().getColor(0.3),
                         ),
                   ),
                 ),

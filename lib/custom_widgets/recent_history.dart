@@ -97,7 +97,7 @@ class _RecentHistoryState extends State<RecentHistory> {
                       style: TextStyle(color: Colors.white, fontSize: 17)),
                 ),
               Container(
-                height: 50,
+                height: 53,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,

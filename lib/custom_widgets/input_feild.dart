@@ -1,5 +1,7 @@
+import 'package:flikipedia/custom_widgets/dynamic_text.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class InputFeild extends StatefulWidget {
   final TextEditingController textController;
@@ -16,10 +18,17 @@ class InputFeild extends StatefulWidget {
 
 class _InputFeildState extends State<InputFeild> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextField(
       style: Theme.of(context).textTheme.headline2.copyWith(
-            color: Colors.black,
+            color: Get.theme.brightness.toString() == "Brightness.light"
+                ? Colors.black
+                : Colors.white,
             fontWeight: FontWeight.bold,
           ),
       textCapitalization: TextCapitalization.words,
@@ -35,11 +44,11 @@ class _InputFeildState extends State<InputFeild> {
           FocusScope.of(context).unfocus();
         });
       },
-      cursorColor: Colors.black,
+      cursorColor: DynamicColor().getColor(1.0),
       decoration: InputDecoration(
           suffixIcon: (widget.textController.text.length > 0)
               ? IconButton(
-                  icon: Icon(Icons.clear),
+                  icon: Icon(Icons.clear, color: DynamicColor().getColor(1.0)),
                   onPressed: () {
                     setState(() {
                       widget.textController.clear();
@@ -51,18 +60,25 @@ class _InputFeildState extends State<InputFeild> {
                 ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(0),
-              borderSide: BorderSide(color: Colors.black)),
+              borderSide: BorderSide(
+                color: DynamicColor().getColor(0.1),
+              )),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(0),
-              borderSide: BorderSide(color: Colors.black.withOpacity(0.1))),
+              borderSide: BorderSide(
+                color: DynamicColor().getColor(0.1),
+              )),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 40.0, horizontal: 10),
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(0),
-              borderSide: BorderSide(color: Colors.black)),
+            borderRadius: BorderRadius.circular(0),
+            borderSide: BorderSide(
+              color: DynamicColor().getColor(0.1),
+            ),
+          ),
           hintText: " Search",
           hintStyle: TextStyle(
-            color: Colors.black.withOpacity(0.3),
+            color: DynamicColor().getColor(0.3),
           )),
     );
   }

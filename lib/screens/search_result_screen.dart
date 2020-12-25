@@ -18,8 +18,10 @@ class SearchResultScreen extends StatelessWidget {
     return Consumer<SearchProvider>(
       builder: (context, searchProvider, _) {
         return Scaffold(
+          // backgroundColor: Colors.white,
           appBar: AppBar(
             title: Text("Results for '$resultQuery'"),
+            backgroundColor: Colors.black,
           ),
           body: ListView.builder(
               itemCount: searchResult.query.pages.length,
@@ -28,6 +30,7 @@ class SearchResultScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
                     elevation: 5,
+                    // color: DynamicColor().getColor(1.0),
                     child: ListTile(
                       onLongPress: () {
                         share(context, searchResultData.pages[index].extract,
@@ -36,6 +39,7 @@ class SearchResultScreen extends StatelessWidget {
                       onTap: () {
                         launchURL(searchResultData.pages[index].url);
                       },
+                      tileColor: Colors.white,
                       contentPadding: EdgeInsets.all(8.0),
                       leading: searchResultData.pages[index].thumbnail != null
                           ? searchResultData.pages[index] != null
