@@ -15,7 +15,7 @@ class Appbar extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: Text(
-              "wikipedia",
+              "flikipedia",
               style: Theme.of(context).textTheme.headline4.copyWith(
                   fontWeight: FontWeight.bold,
                   color: DynamicColor().getColor(1.0)),
