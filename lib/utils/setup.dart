@@ -8,7 +8,6 @@ class Util {
     WidgetsFlutterBinding.ensureInitialized();
     Get.lazyPut<ThemeController>(() => ThemeController());
     ThemeController.to.getThemeModeFromPreferences();
-
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }

@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  //Initializing the necessary components
   await Util.initializeApp();
   runApp(MyApp());
 }
@@ -16,6 +17,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //Setting the provider
     return ChangeNotifierProvider(
       create: (_) => SearchProvider(),
       child: GetMaterialApp(
@@ -31,48 +33,12 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData.dark().copyWith(
           primaryColor: Colors.black,
           textTheme: GoogleFonts.ubuntuTextTheme(
-            Theme.of(context).textTheme.copyWith(),
+            Theme.of(context).textTheme,
           ),
         ),
         themeMode: ThemeController.to.themeMode,
-        // theme: ThemeData(
-        //   canvasColor: Colors.white,
-        //   primaryColor: Colors.black,
-
-        //   visualDensity: VisualDensity.adaptivePlatformDensity,
-        // ),
         home: App(),
       ),
     );
   }
 }
-
-// //STEP 9 - add our ThemeController
-// class ThemeController extends GetxController {
-//   static ThemeController get to => Get.find();
-
-//   SharedPreferences prefs;
-//   ThemeMode _themeMode;
-//   ThemeMode get themeMode => _themeMode;
-
-//   Future<void> setThemeMode(ThemeMode themeMode) async {
-//     Get.changeThemeMode(themeMode);
-//     _themeMode = themeMode;
-//     update();
-//     prefs = await SharedPreferences.getInstance();
-//     await prefs.setString('theme', themeMode.toString().split('.')[1]);
-//   }
-
-//   getThemeModeFromPreferences() async {
-//     ThemeMode themeMode;
-//     prefs = await SharedPreferences.getInstance();
-//     String themeText = prefs.getString('theme') ?? 'system';
-//     try {
-//       themeMode =
-//           ThemeMode.values.firstWhere((e) => describeEnum(e) == themeText);
-//     } catch (e) {
-//       themeMode = ThemeMode.system;
-//     }
-//     setThemeMode(themeMode);
-//   }
-// }

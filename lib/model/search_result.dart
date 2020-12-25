@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+// Model for the SearchResult
+
 SearchResult searchResultFromJson(String str) =>
     SearchResult.fromJson(json.decode(str));
 

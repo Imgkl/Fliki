@@ -20,6 +20,7 @@ class SearchProvider extends ChangeNotifier {
   SearchProvider get searchProvider => SearchProvider();
 
   deleteAllCache() async {
+    //Deleting the cache files which is stored in the temporary directory
     var cacheDir = (await getTemporaryDirectory()).path;
     Directory(cacheDir).delete(recursive: true);
   }

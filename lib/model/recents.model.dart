@@ -1,3 +1,4 @@
+//Model for the RecentHistory
 class Recents {
   String title;
 

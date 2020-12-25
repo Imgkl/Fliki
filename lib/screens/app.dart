@@ -21,13 +21,16 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   List<Recents> list = new List<Recents>();
   SharedPreferences sharedPreferences;
   TextEditingController textController = TextEditingController();
+
   @override
   void initState() {
+    //Getting the recents which is stored in Shared Pref
     loadSharedPreferencesAndData();
     super.initState();
   }
 
   void loadData() {
+    //Loading the reselts data and mapping them to List of Type "Result"
     List<String> listString = sharedPreferences.getStringList('list');
     if (listString != null) {
       setState(() {
@@ -41,16 +44,19 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 
   removeData() async {
+    //Remove all recents
     await sharedPreferences.clear();
     loadData();
   }
 
   void loadSharedPreferencesAndData() async {
+    //Initializing the shared preferences
     sharedPreferences = await SharedPreferences.getInstance();
     loadData();
   }
 
   addItem(Recents item) {
+    //Adding the item to the recents
     if (list.isEmpty || list[0].title != item.title) {
       list.insert(0, item);
     }
@@ -58,6 +64,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 
   void saveData() {
+    //Saving the recents data in the shared preferences
     List<String> stringList =
         list.map((item) => json.encode(item.toMap())).toList();
     sharedPreferences.setStringList('list', stringList);
