@@ -2,6 +2,7 @@ import 'package:flikipedia/utils/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:flutter/services.dart';
 
 class ThemeToggle extends StatelessWidget {
   @override
@@ -10,6 +11,7 @@ class ThemeToggle extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
+          HapticFeedback.heavyImpact();
           if (Get.theme.brightness == Brightness.light) {
             ThemeController.to.setThemeMode(ThemeMode.dark);
           } else {

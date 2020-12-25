@@ -3,6 +3,7 @@ import 'package:flikipedia/custom_widgets/shimmer_image.dart';
 import 'package:flikipedia/model/search_result.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class SearchResultScreen extends StatelessWidget {
@@ -37,6 +38,7 @@ class SearchResultScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       child: ListTile(
                         onLongPress: () {
+                          HapticFeedback.heavyImpact();
                           share(context, searchResultData.pages[index].extract,
                               searchResultData.pages[index].url);
                         },

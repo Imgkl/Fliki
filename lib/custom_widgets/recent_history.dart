@@ -1,6 +1,7 @@
 import 'package:flikipedia/model/recents.model.dart';
 import 'package:flikipedia/provider/search_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class RecentHistory extends StatefulWidget {
@@ -75,6 +76,7 @@ class _RecentHistoryState extends State<RecentHistory> {
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(20.0)),
                         onPressed: () async {
+                          HapticFeedback.heavyImpact();
                           setState(() {
                             widget.removeRecent();
                             widget.loadList();
