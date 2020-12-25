@@ -5,9 +5,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ThemeToggle extends StatelessWidget {
-  final Function toggleFunction;
-
-  const ThemeToggle(this.toggleFunction);
+  const ThemeToggle();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,7 +15,6 @@ class ThemeToggle extends StatelessWidget {
         } else {
           ThemeController.to.setThemeMode(ThemeMode.light);
         }
-        toggleFunction();
       },
       child: Stack(
         children: <Widget>[
