@@ -29,41 +29,47 @@ class SearchResultScreen extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
                     elevation: 5,
                     // color: DynamicColor().getColor(1.0),
-                    child: ListTile(
-                      onLongPress: () {
-                        share(context, searchResultData.pages[index].extract,
-                            searchResultData.pages[index].url);
-                      },
-                      onTap: () {
-                        launchURL(searchResultData.pages[index].url);
-                      },
-                      tileColor: Colors.white,
-                      contentPadding: EdgeInsets.all(8.0),
-                      leading: searchResultData.pages[index].thumbnail != null
-                          ? searchResultData.pages[index] != null
-                              ? CacheImage(
-                                  url: searchResultData
-                                      .pages[index].thumbnail.source,
-                                )
-                              : Image.asset("assets/wiki_logo.png")
-                          : Image.asset(
-                              "assets/wiki_logo.png",
-                              scale: 8,
-                              height: 80,
-                              width: 80,
-                            ),
-                      subtitle: Text(
-                        searchResultData.pages[index].terms != null
-                            ? searchResultData.pages[index].terms.description[0]
-                            : "Description not available",
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: ListTile(
+                        onLongPress: () {
+                          share(context, searchResultData.pages[index].extract,
+                              searchResultData.pages[index].url);
+                        },
+                        onTap: () {
+                          launchURL(searchResultData.pages[index].url);
+                        },
+                        tileColor: Colors.white,
+                        contentPadding: EdgeInsets.all(8.0),
+                        leading: searchResultData.pages[index].thumbnail != null
+                            ? searchResultData.pages[index] != null
+                                ? CacheImage(
+                                    url: searchResultData
+                                        .pages[index].thumbnail.source,
+                                  )
+                                : Image.asset("assets/wiki_logo.png")
+                            : Image.asset(
+                                "assets/wiki_logo.png",
+                                scale: 8,
+                                height: 80,
+                                width: 80,
+                              ),
+                        subtitle: Text(
+                          searchResultData.pages[index].terms != null
+                              ? searchResultData
+                                  .pages[index].terms.description[0]
+                              : "Description not available",
+                        ),
+                        title: Text(
+                          searchResult.query.pages[index].title,
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                        isThreeLine: true,
                       ),
-                      title: Text(
-                        searchResult.query.pages[index].title,
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                      isThreeLine: true,
                     ),
                   ),
                 );
