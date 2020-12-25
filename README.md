@@ -15,3 +15,4 @@ A Minimalistic flutter application which uses Wiki Search API.
  - Toast messages to denote the user if he is seeing the cached data or from API
  - Native Splash screen
  - Dynamic Theme support (Presistant)
+ - Haptic feedback in some places to improve UX
