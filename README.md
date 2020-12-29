@@ -1,4 +1,4 @@
-# Flikipedia
+# Flikipedia &nbsp;&nbsp;&nbsp;&nbsp; [![Codemagic build status](https://api.codemagic.io/apps/5fe65b199a189ed30a15a4f0/5fe65b199a189ed30a15a4ef/status_badge.svg)](https://codemagic.io/apps/5fe65b199a189ed30a15a4f0/5fe65b199a189ed30a15a4ef/latest_build)
 
 A Minimalistic flutter application which uses Wiki Search API.
 
