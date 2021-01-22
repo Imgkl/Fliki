@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Flikipedia"
+        android:label="Fliki"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
