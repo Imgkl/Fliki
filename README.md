@@ -1,5 +1,4 @@
-# Fliki &nbsp;&nbsp;&nbsp;&nbsp; [![Codemagic build status](https://api.codemagic.io/apps/5fe65b199a189ed30a15a4f0/5fe65b199a189ed30a15a4ef/status_badge.svg)](https://codemagic.io/apps/5fe65b199a189ed30a15a4f0/5fe65b199a189ed30a15a4ef/latest_build)
-
+# Fliki &nbsp;&nbsp;&nbsp;&nbsp; [<img src = "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="50">](https://play.google.com/store/apps/details?id=io.imgkl.flikipedia)
 A Minimalistic flutter application which uses Wiki Search API.
 
 ## Mockup and Implementation
@@ -14,5 +13,5 @@ A Minimalistic flutter application which uses Wiki Search API.
  - Clear caches in a single click
  - Toast messages to denote the user if he is seeing the cached data or from API
  - Native Splash screen
- - Dynamic Theme support (Presistant)
+ - Dynamic Theme support (Persistant)
  - Haptic feedback in some places to improve UX
